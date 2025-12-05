@@ -1,0 +1,90 @@
+{
+	"metadata": {
+		"type": "App"
+	},
+	"project": {
+		"shadows": true,
+		"shadowType": 1,
+		"toneMapping": 0,
+		"toneMappingExposure": 1
+	},
+	"camera": {
+		"metadata": {
+			"version": 4.7,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"object": {
+			"uuid": "2ecaf1b7-ac62-4f24-a013-e023f1dfa8fe",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"layers": 1,
+			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,1.9965137618347306,1],
+			"up": [0,1,0],
+			"fov": 50,
+			"zoom": 1,
+			"near": 0.01,
+			"far": 1000,
+			"focus": 10,
+			"aspect": 1.7083786724700762,
+			"filmGauge": 35,
+			"filmOffset": 0
+		}
+	},
+	"scene": {
+		"metadata": {
+			"version": 4.7,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"geometries": [
+			{
+				"uuid": "f531699e-f938-4ed2-86a0-110f72b92864",
+				"type": "PlaneGeometry",
+				"width": 3.92,
+				"height": 2.3,
+				"widthSegments": 1,
+				"heightSegments": 1
+			}],
+		"materials": [
+			{
+				"uuid": "16679fe0-b175-4b5d-808c-8b9d8ab68285",
+				"type": "ShaderMaterial",
+				"blendColor": 0,
+				"forceSinglePass": true,
+				"fog": false,
+				"glslVersion": null,
+				"uniforms": {},
+				"vertexShader": "\nvarying vec2 vUv;\nvoid main() {\n\t    vec2 verts[3];\n        verts[0] = vec2(1.4, 1.0);\n        verts[1] = vec2( 0.0, -0.9);\n        verts[2] = vec2( -0.7, 1.2);\n\t\n\tvec2 uvs[3];\n\t\n\t    // Triangle UVs\n\t\tuvs[0] = vec2(0.0, 0.0);\n\t\tuvs[1] = vec2(0.5, 0.0);\n\t\tuvs[2] = vec2(1.0, 1.0);\n\n\t\tvUv = uvs[gl_VertexID];\n\n        // gl_VertexID used to select vertex\n        vec3 vposition = vec3(verts[gl_VertexID], 0.0);\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( vposition, 1.0 );\n\t//gl_Position =   vec4( vposition, 1.0 );\n}\t",
+				"fragmentShader": "varying vec2 vUv;\nvoid main() {\n\tfloat u = vUv[0];\n\tfloat v = vUv[1];\n\t\n\tfloat f = u*u - v;\n\tfloat t = 1.0;\n\t\n\tif(f < 0.0){\n\tt = 0.0;\n\t}\n\telse{\n\tt= 1.0;\n\t}\n\t\n\tgl_FragColor = vec4(t);\n}",
+				"lights": false,
+				"clipping": false
+			}],
+		"object": {
+			"uuid": "7064c8e5-9493-4bd1-b6c4-592f576802d5",
+			"type": "Scene",
+			"name": "Scene",
+			"layers": 1,
+			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+			"up": [0,1,0],
+			"background": 16777215,
+			"children": [
+				{
+					"uuid": "62255e03-8c2a-40ee-a08e-8b9dc3453a26",
+					"type": "Mesh",
+					"name": "Plane",
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-0.3792822241833298,-0.46827592705911986,0,1],
+					"up": [0,1,0],
+					"geometry": "f531699e-f938-4ed2-86a0-110f72b92864",
+					"material": "16679fe0-b175-4b5d-808c-8b9d8ab68285"
+				}],
+			"backgroundRotation": [0,0,0,
+				"XYZ"],
+			"environmentRotation": [0,0,0,
+				"XYZ"]
+		}
+	},
+	"scripts": {},
+	"environment": null
+}
