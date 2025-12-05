@@ -108,9 +108,16 @@ var APP = {
 
 		};
 
+
 		this.setScene = function ( value ) {
 
 			scene = value;
+
+		};
+
+		this.getScene = function ( ) {
+
+			return scene;
 
 		};
 

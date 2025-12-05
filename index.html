@@ -47,24 +47,31 @@
 					player.setSize( window.innerWidth, window.innerHeight );
 
 				} );
+							// const loader = new THREE.FileLoader();
+				loader.setResponseType('text');
+
+				loader.load('/vert.glsl', (vertexShader) => {
+				loader.load('/frag.glsl', (fragmentShader) => {
+
+					const material = new THREE.ShaderMaterial({
+					vertexShader,
+					fragmentShader
+					});
+					console.log("Custom shaders loaded and material created:", material);
+					var scene = player.getScene();
+					scene.traverse((child) => {
+						if (child.isMesh) {
+							child.material = material;
+							console.log("Applied custom shader material to mesh:", child);
+						}
+					});
+					
+				});
+				});
+
 
 			} );
 
-			// const loader = new THREE.FileLoader();
-			loader.setResponseType('text');
-
-			loader.load('/vert.glsl', (vertexShader) => {
-			loader.load('/frag.glsl', (fragmentShader) => {
-
-				const material = new THREE.ShaderMaterial({
-				vertexShader,
-				fragmentShader
-				});
-				console.log("Custom shaders loaded and material created:", material);
-				
-
-			});
-			});
 
 
 
