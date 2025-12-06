@@ -1,4 +1,6 @@
-Main Shader Files : 
+# Bezier Quadratic shape drawing using loop blinn method
+
+## Main Shader Files : 
 
 
   *  innerVert.glsl
