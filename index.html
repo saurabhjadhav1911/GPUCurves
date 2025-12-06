@@ -76,7 +76,7 @@
 					var scene = player.getScene();
 					scene.traverse((child) => {
 						if (child.isMesh) {
-							child.material = material;
+							// child.material = material;
 							console.log("Applied custom shader material to mesh:", child);
 						}
 					});
