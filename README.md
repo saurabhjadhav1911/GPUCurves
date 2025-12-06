@@ -1,6 +1,7 @@
 Main Shader Files : 
 
 
-vert.glsl
-
-frag.glsl
+  *  innerVert.glsl
+  *  innerFrag.glsl
+  *  outerVert.glsl
+  *  outerFrag.glsl

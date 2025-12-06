@@ -65,8 +65,8 @@
 							// const loader = new THREE.FileLoader();
 				loader.setResponseType('text');
 
-				loader.load('/vert.glsl', (vertexShader) => {
-				loader.load('/frag.glsl', (fragmentShader) => {
+				loader.load('/innerVert.glsl', (vertexShader) => {
+				loader.load('/innerFrag.glsl', (fragmentShader) => {
 
 					const material = new THREE.ShaderMaterial({
 					vertexShader,
@@ -75,8 +75,29 @@
 					console.log("Custom shaders loaded and material created:", material);
 					var scene = player.getScene();
 					scene.traverse((child) => {
-						if (child.isMesh) {
-							// child.material = material;
+						if (child.isMesh && child.name === "Quadratic.028" ) {
+							material.side = THREE.BackSide;
+							child.material = material;
+							console.log("Applied custom shader material to mesh:", child);
+						}
+					});
+					
+				});
+				});
+				
+				loader.load('/outerVert.glsl', (vertexShader) => {
+				loader.load('/outerFrag.glsl', (fragmentShader) => {
+
+					const material = new THREE.ShaderMaterial({
+					vertexShader,
+					fragmentShader
+					});
+					console.log("Custom shaders loaded and material created:", material);
+					var scene = player.getScene();
+					scene.traverse((child) => {
+						if (child.isMesh && child.name === "Quadratic.029" ) {
+							material.side = THREE.BackSide;
+							child.material = material;
 							console.log("Applied custom shader material to mesh:", child);
 						}
 					});

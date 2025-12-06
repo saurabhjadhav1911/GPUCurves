@@ -120,8 +120,8 @@
 				"fog": false,
 				"glslVersion": null,
 				"uniforms": {},
-				"vertexShader": "\nvarying vec2 vUv;\nvoid main() {\n\t\n\tvec2 uvs[3];\n\t\n\t    // Triangle UVs\n\t\tuvs[1] = vec2(0.0, 0.0);\n\t\tuvs[0] = vec2(0.5, 0.0);\n\t\tuvs[2] = vec2(1.0, 1.0);\n\tint i = gl_VertexID % 3;\n\n\t\tvUv = uvs[i];\n\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\t//gl_Position =   vec4( vposition, 1.0 );\n}\t",
-				"fragmentShader": "varying vec2 vUv;\nvoid main() {\n\tfloat u = vUv[0];\n\tfloat v = vUv[1];\n\t\n\tfloat f = u*u - v;\n\tfloat t = 1.0;\n\t\n\tif(f < 0.0){\n\tt = 0.0;\n\t}\n\telse{\n\tt= 1.0;\n\t}\n\t\n\tgl_FragColor = vec4(t);\n}",
+				"vertexShader": "void main() {gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );}",
+				"fragmentShader": "void main() {gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );}",
 				"lights": false,
 				"clipping": false
 			},
@@ -149,8 +149,8 @@
 				"fog": false,
 				"glslVersion": null,
 				"uniforms": {},
-				"vertexShader": "\nvarying vec2 vUv;\nvoid main() {\n\t\n\tvec2 uvs[3];\n\t\n\t    // Triangle UVs\n\t\tuvs[1] = vec2(0.0, 0.0);\n\t\tuvs[0] = vec2(0.5, 0.0);\n\t\tuvs[2] = vec2(1.0, 1.0);\n\tint i = gl_VertexID % 3;\n\n\t\tvUv = uvs[i];\n\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\t//gl_Position =   vec4( vposition, 1.0 );\n}\t",
-				"fragmentShader": "varying vec2 vUv;\nvoid main() {\n\tfloat u = vUv[0];\n\tfloat v = vUv[1];\n\t\n\tfloat f = u*u - v;\n\tfloat t = 1.0;\n\t\n\tif(f < 0.0){\n\tt = 0.0;\n\t}\n\telse{\n\tt= 1.0;\n\t}\n\t\n\tgl_FragColor = vec4(1.0-t);\n}",
+				"vertexShader": "void main() {gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );}",
+				"fragmentShader": "void main() {gl_FragColor = vec4( 0.0, 0.0, 1.0, 1.0 );}",
 				"lights": false,
 				"clipping": false
 			}],
